@@ -144,3 +144,26 @@ ul {
   align-items: center;      /* center horizontally */
   text-align: center;       /* center subtitle text */
 }
+
+.result-carousel .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.results-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none; /* prevent interaction when hidden */
+  transition: opacity 0.0;
+}
+
+.results-carousel.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative; /* so it occupies space in layout */
+}

@@ -2,25 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta name="description" content="GAINS: Gaussian-based Inverse Rendering from Sparse Multi-View Captures">
+  <meta property="og:url" content="https://patrickbail.github.io/gains/"/>
 
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="Inverse Rendering, material reflectance estimation, gaussian splatting">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -111,8 +96,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
+      <video poster="" id="tree" autoplay muted loop playsinline height="100%">
         <source src="static/videos/GAINS_video_demo_compressed.mov"
         type="video/quicktime">
       </video>
@@ -142,7 +126,6 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
       <h2 class="title is-3 has-text-centered">Method</h2>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
@@ -163,46 +146,73 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
+
       <h2 class="title is-3 has-text-centered">Relighting Results</h2>
+
+      <div class="buttons is-centered">
+        <button class="button is-info is-light result-btn" data-target="tensorIR">tensorIR</button>
+        <button class="button is-info is-light result-btn" data-target="refreal">Ref-Real</button>
+      </div>
+
       <p class="is-3 has-text-centered">tensorIR (8 views)</p>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item is-centered">
-        <img src="static/images/tensorIR_hotdog_relight_env.png" alt="tensorIR hotdog relighting results"/>
-        <h2 class="subtitle has-text-centered">
-         hotdog
-        </h2>
+
+      <!-- tensorIR carousel -->
+      <div id="carousel-tensorIR" class="carousel results-carousel result-carousel active">
+        <div class="item">
+          <img src="static/images/tensorIR_hotdog_relight_env.png">
+          <h2 class="subtitle has-text-centered">hotdog</h2>
+        </div>
+        <div class="item">
+          <img src="static/images/tensorIR_lego_relight_env.png">
+          <h2 class="subtitle has-text-centered">lego</h2>
+        </div>
+        <div class="item">
+          <img src="static/images/tensorIR_ficus_relight_env.png">
+          <h2 class="subtitle has-text-centered">ficus</h2>
+        </div>
+        <div class="item">
+          <img src="static/images/tensorIR_armadillo_relight_env.png">
+          <h2 class="subtitle has-text-centered">armadillo</h2>
+        </div>
       </div>
-      <div class="item is-centered">
-        <img src="static/images/tensorIR_lego_relight_env.png" alt="tensorIR lego relighting results"/>
-        <h2 class="subtitle has-text-centered">
-         lego
-       </h2>
+
+      <!-- Ref-Real carousel -->
+      <div id="carousel-refreal" class="carousel results-carousel result-carousel">
+        <div class="item">
+          <video poster="" id="tree" autoplay muted loop playsinline height="100%">
+            <source src="static/videos/ref_real_spheres.mov"
+            type="video/quicktime">
+          </video>
+          <h2 class="subtitle has-text-centered">gardenspheres</h2>
+        </div>
+        <div class="item">
+          <video poster="" id="tree" autoplay muted loop playsinline height="100%">
+            <source src="static/videos/ref_real_toycar.mov"
+            type="video/quicktime">
+          </video>
+          <h2 class="subtitle has-text-centered">toycar</h2>
+        </div>
+        <div class="item">
+          <video poster="" id="tree" autoplay muted loop playsinline height="100%">
+            <source src="static/videos/ref_real_sedan.mov"
+            type="video/quicktime">
+          </video>
+          <h2 class="subtitle has-text-centered">sedan</h2>
+        </div>
       </div>
-      <div class="item is-centered">
-        <img src="static/images/tensorIR_ficus_relight_env.png" alt="tensorIR ficus relighting results"/>
-        <h2 class="subtitle has-text-centered">
-         ficus
-       </h2>
-     </div>
-     <div class="item is-centered">
-      <img src="static/images/tensorIR_armadillo_relight_env.png" alt="tensorIR armadillo relighting results"/>
-      <h2 class="subtitle has-text-centered">
-         armadillo
-       </h2>
+
     </div>
   </div>
-</div>
-</div>
 </section>
 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3 has-text-centered">Ablation</h2>
+      <h2 class="title is-3 has-text-centered">Material Estimation</h2>
+      <p class="is-3 has-text-centered">Synthetic4Relight (8 views)</p>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
-          <img src="static/images/spheres_ablation.jpg" alt="GAINS method ablation" style="max-width: 80%; height: auto; display: block; margin: 0 auto;"/>
+          <img src="static/images/syn4r_fig.png" alt="GAINS Material Estimation" style="max-width: 90%; height: auto; display: block; margin: 0 auto;"/>
         </div>
       </div>
     </div>
@@ -212,11 +222,11 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
       <h2 class="title is-3 has-text-centered">View-dependent Performance</h2>
+      <p class="is-3 has-text-centered">tensorIR</p>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
-          <img src="static/images/tensorIR_view_charts.png" alt="GAINS View-dependent Performance"/>
+          <img src="static/images/tensorIR_view_charts.png" alt="GAINS View-dependent Performance" style="max-width: 80%; height: auto; display: block; margin: 0 auto;"/>
         </div>
       </div>
     </div>
@@ -249,6 +259,27 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
     </div>
   </div>
 </footer>
+
+<script>
+  const buttons = document.querySelectorAll('.result-btn');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const target = button.getAttribute('data-target');
+
+      document.querySelectorAll('.results-carousel').forEach(carousel => {
+        carousel.classList.remove('active');
+      });
+
+      document.getElementById('carousel-' + target).classList.add('active');
+
+      const desc = {
+        tensorIR: "tensorIR (8 views)",
+        refreal: "Ref-Real (8 views)",
+      };
+      document.querySelector('p.is-3').textContent = desc[target];
+    });
+  });
+</script>
 
 <!-- Statcounter tracking code -->
   
