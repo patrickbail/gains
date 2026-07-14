@@ -185,6 +185,9 @@ GAINS first refines geometry using monocular depth, normal, and diffusion priors
           </div>
         </button>
       </div>
+      <div class="has-text-centered mb-3">
+        <button id="sync-videos-btn" class="button is-info is-light">Resync Videos</button>
+      </div>
       <h3 class="title is-4 has-text-centered">Ref-Real (8 input views)</h3>
 
       <h3 class="title is-5 has-text-centered">Gardenspheres</h3>
@@ -873,6 +876,24 @@ document.querySelectorAll(".env-btn").forEach(btn=>{
     updateVideos();
   });
 });
+
+function syncVideos() {
+  const activeVideos = document.querySelectorAll(".result-video.active");
+
+  activeVideos.forEach(video => {
+    video.pause();
+    video.currentTime = 0;
+  });
+
+  // Give the browser a moment to seek all videos
+  setTimeout(() => {
+    activeVideos.forEach(video => {
+      video.play().catch(() => {});
+    });
+  }, 50);
+}
+
+document.getElementById("sync-videos-btn").addEventListener("click", syncVideos);
 
 new BeforeAfter({ id: '#example0' });
 new BeforeAfter({ id: '#example1' });
