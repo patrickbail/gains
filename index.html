@@ -27,6 +27,7 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <script src="static/js/bal.js"></script>
 </head>
 <body>
 
@@ -37,6 +38,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">GAINS: Gaussian-based Inverse Rendering from Sparse Multi-View Captures</h1>
+            <h2 class="title is-4">ECCV 2026</h2>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -52,53 +54,51 @@
                   <span class="author-block">
                     <a href="https://www.cs.unc.edu/~ronisen/" target="_blank">Roni Sengupta<sup>3</sup></a>
                   </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>University of Kaiserslautern-Landau, <sup>2</sup>German Research Center for Artificial Intelligence, <br> <sup>3</sup>University of North Carolina at Chapel Hill, <sup>4</sup>College of William & Mary</span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://www.arxiv.org/pdf/2512.09925" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>University of Kaiserslautern-Landau, <sup>2</sup>German Research Center for Artificial Intelligence, <br> <sup>3</sup>University of North Carolina at Chapel Hill, <sup>4</sup>College of William & Mary</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                  <span class="link-block">
+                    <a href="https://www.arxiv.org/pdf/2512.09925" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
                     </span>
+                    <span>Paper</span>
+                    </a>
+                  </span>
 
                   <span class="link-block">
-                      <a href="https://www.arxiv.org/abs/2512.09925" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="ai ai-arxiv"></i>
-                      </span>
-                      <span>arXiv</span>
+                    <a href="https://www.arxiv.org/abs/2512.09925" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
                     </a>
                   </span>
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
+                    <a href="https://patrickbail.github.io/gains/" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark disabled-button">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
                     <span>Code (Coming soon!)</span>
-                  </a>
-                </span>
-                </a>
-              </span>
+                    </a>
+                  </span>
+              </div>
             </div>
+
+
           </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
 
 
@@ -106,8 +106,8 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay muted loop playsinline height="100%">
-        <source src="static/videos/GAINS_video_demo_compressed.mp4"
+      <video poster="" id="tree" autoplay muted playsinline controls height="100%">
+        <source src="static/videos/GAINS_demo_compressed.mp4"
         type="video/mp4">
       </video>
     </div>
@@ -124,7 +124,8 @@
         <div class="content has-text-justified">
           <p>
             Recent advances in Gaussian Splatting-based inverse rendering extend Gaussian primitives with shading parameters and physically grounded light transport, enabling high-quality material
-recovery from dense multi-view captures. However, these methods degrade sharply under sparse-view settings, where limited observations lead to severe ambiguity between geometry, reflectance, and lighting. We introduce GAINS (Gaussian-based Inverse rendering from Sparse multi-view captures), a two-stage inverse rendering framework that leverages learning-based priors to stabilize geometry and material estimation. GAINS first refines geometry using monocular depth/normal and diffusion priors, then employs segmentation, intrinsic image decomposition (IID), and diffusion priors to regularize material recovery. Extensive experiments on synthetic and real-world datasets show that GAINS significantly improves material parameter accuracy, relighting quality, and novel-view synthesis compared to state-of-the-art Gaussian-based inverse rendering methods, especially under sparse-view settings.
+recovery from dense multi-view captures. However, the accuracy of these methods degrades under sparse-view settings, where limited observations lead to severe ambiguity between geometry, reflectance, and lighting. We introduce GAINS (Gaussian-based Inverse rendering from Sparse multi-view captures), a two-stage inverse rendering framework that leverages foundation models as priors to stabilize geometry and material estimation. The core technical contribution of this paper is an inverse rendering framework that unifies foundation model priors with physically-based representations in an optimization scheme.
+GAINS first refines geometry using monocular depth, normal, and diffusion priors, and then employs segmentation, intrinsic image decomposition (IID), and diffusion priors to regularize material recovery. Extensive experiments on synthetic and real-world datasets show that GAINS significantly improves material parameter accuracy, relighting quality, and novel-view synthesis compared to state-of-the-art Gaussian-based inverse rendering methods. While GAINS outperforms and remains competitive across a wide range of objects captured with 4 to 32 cameras, the improvement is particularly pronounced under sparse-view settings, where ambiguity is high and learning-based priors become especially beneficial.
           </p>
         </div>
       </div>
@@ -144,7 +145,7 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
           <ul>
             <li>We introduce <b>GAINS</b>, a Gaussian-splatting-based inverse rendering framework for <b>sparse</b> multi-view inputs on both <b>objects</b> and <b>scenes</b>.</li>
             <li>We first recover <b>geometry</b> using priors from monocular <b>depth</b>, <b>normals</b>, and <b>latent diffusion</b>.</li>
-            <li><b>GAINS</b> then estimates <b>materials</b> and <b>lighting</b> using three complementary priors: <b>segmentation</b> guidance, <b>intrinsic image decomposition</b>, and <b>latent diffusion</b>.</li>
+            <li><b>GAINS</b> then estimates <b>materials</b> and <b>lighting</b> using three complementary priors: <b>segmentation guidance</b>, <b>intrinsic image decomposition</b>, and <b>latent diffusion</b>.</li>
             <li>Combining these priors enables <b>robust</b> material recovery, <b>consistent</b> lighting estimation, and <b>stable</b> novel-view synthesis and relighting under challenging sparse-view conditions.</li>
           </ul>
         </div>
@@ -156,61 +157,551 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
+      <h2 class="title is-3 has-text-centered">Qualitative Comparison</h2>
+      <div class="buttons is-centered mb-3">
+        <button class="button is-info is-light mode-btn active" data-mode="relight">Relight</button>
+        <button class="button is-info is-light mode-btn" data-mode="normal">Normal</button>
+        <button class="button is-info is-light mode-btn" data-mode="metallic">Metallic</button>
+        <button class="button is-info is-light mode-btn" data-mode="roughness">Roughness</button>
+        <button class="button is-info is-light mode-btn" data-mode="albedo">Albedo</button>
+      </div>
+      <div id="env-buttons" class="buttons is-centered mb-4">
+        <button class="button is-light env-btn active env-image-btn" data-env="bridge">
+          <div class="env-btn-content">
+            <img src="static/images/bridge.png" alt="Bridge">
+            <span class="env-label">Bridge</span>
+          </div>
+        </button>
+        <button class="button is-light env-btn env-image-btn" data-env="city">
+          <div class="env-btn-content">
+            <img src="static/images/city.png" alt="City">
+            <span class="env-label">City</span>
+          </div>
+        </button>
+        <button class="button is-light env-btn env-image-btn" data-env="forest">
+          <div class="env-btn-content">
+            <img src="static/images/forest.png" alt="Forest">
+            <span class="env-label">Forest</span>
+          </div>
+        </button>
+      </div>
+      <h3 class="title is-4 has-text-centered">Ref-Real (8 input views)</h3>
 
-      <h2 class="title is-3 has-text-centered">Relighting Results</h2>
+      <h3 class="title is-5 has-text-centered">Gardenspheres</h3>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div id="example0" class="small-bal-container">
+              <!-- Ours vs Ref-Gaussian -->
+              <div class="bal-wrapper">
+                  <div class="bal-after">
+                      <!-- RELIGHT -->
+                      <video class="result-video relight bridge active"
+                      src="static/videos/ref_gaussian/spheres/render_traj_render_bridge.mp4"
+                      autoplay loop muted playsinline></video>
 
-      <div class="buttons is-centered">
-        <button class="button is-info is-light result-btn" data-target="tensorIR">tensorIR</button>
-        <button class="button is-info is-light result-btn" data-target="refreal">Ref-Real</button>
+                      <video class="result-video relight city"
+                      src="static/videos/ref_gaussian/spheres/render_traj_render_city.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight forest"
+                      src="static/videos/ref_gaussian/spheres/render_traj_render_forest.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- NORMAL -->
+                      <video class="result-video normal"
+                      src="static/videos/ref_gaussian/spheres/render_traj_normal.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- METALLIC -->
+                      <video class="result-video metallic"
+                      src="static/videos/ref_gaussian/spheres/render_traj_refl.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- ROUGHNESS -->
+                      <video class="result-video roughness"
+                      src="static/videos/ref_gaussian/spheres/render_traj_roughness.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- Albedo -->
+                      <video class="result-video albedo"
+                      src="static/videos/ref_gaussian/spheres/render_traj_base.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <div class="bal-afterPosition afterLabel">Ref-Gaussian</div>
+                  </div>
+                  <div class="bal-before">
+                      <div class="bal-before-inset">
+                          <video class="result-video relight bridge active"
+                          src="static/videos/ours/spheres/render_traj_render_bridge.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight city"
+                          src="static/videos/ours/spheres/render_traj_render_city.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight forest"
+                          src="static/videos/ours/spheres/render_traj_render_forest.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- NORMAL -->
+                          <video class="result-video normal"
+                          src="static/videos/ours/spheres/render_traj_normal.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- METALLIC -->
+                          <video class="result-video metallic"
+                          src="static/videos/ours/spheres/render_traj_refl.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- ROUGHNESS -->
+                          <video class="result-video roughness"
+                          src="static/videos/ours/spheres/render_traj_roughness.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- Albedo -->
+                          <video class="result-video albedo"
+                          src="static/videos/ours/spheres/render_traj_base.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <div class="bal-beforePosition beforeLabel">GAINS (Ours)</div>
+                      </div>
+                  </div>
+                  <div class="bal-handle">
+                      <span class="handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                  </div>
+              </div>        
+          </div>
+        </div>
+        <!-- Ours vs GI-GS -->
+        <div class="column is-half">
+          <div id="example1" class="small-bal-container">
+              <div class="bal-wrapper">
+                  <div class="bal-after">
+                      <!-- RELIGHT -->
+                      <video class="result-video relight bridge active"
+                      src="static/videos/gi_gs/spheres/render_traj_render_bridge.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight city"
+                      src="static/videos/gi_gs/spheres/render_traj_render_city.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight forest"
+                      src="static/videos/gi_gs/spheres/render_traj_render_forest.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- NORMAL -->
+                      <video class="result-video normal"
+                      src="static/videos/gi_gs/spheres/render_traj_normal.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- METALLIC -->
+                      <video class="result-video metallic"
+                      src="static/videos/gi_gs/spheres/render_traj_refl.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- ROUGHNESS -->
+                      <video class="result-video roughness"
+                      src="static/videos/gi_gs/spheres/render_traj_roughness.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- Albedo -->
+                      <video class="result-video albedo"
+                      src="static/videos/gi_gs/spheres/render_traj_base.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <div class="bal-afterPosition afterLabel">GI-GS</div>
+                  </div>
+                  <div class="bal-before">
+                      <div class="bal-before-inset">
+                          <video class="result-video relight bridge active"
+                          src="static/videos/ours/spheres/render_traj_render_bridge.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight city"
+                          src="static/videos/ours/spheres/render_traj_render_city.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight forest"
+                          src="static/videos/ours/spheres/render_traj_render_forest.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- NORMAL -->
+                          <video class="result-video normal"
+                          src="static/videos/ours/spheres/render_traj_normal.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- METALLIC -->
+                          <video class="result-video metallic"
+                          src="static/videos/ours/spheres/render_traj_refl.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- ROUGHNESS -->
+                          <video class="result-video roughness"
+                          src="static/videos/ours/spheres/render_traj_roughness.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- Albedo -->
+                          <video class="result-video albedo"
+                          src="static/videos/ours/spheres/render_traj_base.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <div class="bal-beforePosition beforeLabel">GAINS (Ours)</div>
+                      </div>
+                  </div>
+                  <div class="bal-handle">
+                      <span class="handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                  </div>
+              </div>        
+          </div>
+        </div>
       </div>
 
-      <p class="is-3 has-text-centered">tensorIR (8 views)</p>
+      <h3 class="title is-5 has-text-centered">Toycar</h3>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div id="example2" class="small-bal-container">
+              <!-- Ours vs Ref-Gaussian -->
+              <div class="bal-wrapper">
+                  <div class="bal-after">
+                      <!-- RELIGHT -->
+                      <video class="result-video relight bridge active"
+                      src="static/videos/ref_gaussian/toycar/render_traj_render_bridge.mp4"
+                      autoplay loop muted playsinline></video>
 
-      <!-- tensorIR carousel -->
-      <div id="carousel-tensorIR" class="carousel results-carousel result-carousel active">
-        <div class="item">
-          <img src="static/images/tensorIR_hotdog_relight_env.png">
-          <h2 class="subtitle has-text-centered">hotdog</h2>
+                      <video class="result-video relight city"
+                      src="static/videos/ref_gaussian/toycar/render_traj_render_city.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight forest"
+                      src="static/videos/ref_gaussian/toycar/render_traj_render_forest.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- NORMAL -->
+                      <video class="result-video normal"
+                      src="static/videos/ref_gaussian/toycar/render_traj_normal.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- METALLIC -->
+                      <video class="result-video metallic"
+                      src="static/videos/ref_gaussian/toycar/render_traj_refl.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- ROUGHNESS -->
+                      <video class="result-video roughness"
+                      src="static/videos/ref_gaussian/toycar/render_traj_roughness.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- Albedo -->
+                      <video class="result-video albedo"
+                      src="static/videos/ref_gaussian/toycar/render_traj_base.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <div class="bal-afterPosition afterLabel">Ref-Gaussian</div>
+                  </div>
+                  <div class="bal-before">
+                      <div class="bal-before-inset">
+                          <video class="result-video relight bridge active"
+                          src="static/videos/ours/toycar/render_traj_render_bridge.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight city"
+                          src="static/videos/ours/toycar/render_traj_render_city.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight forest"
+                          src="static/videos/ours/toycar/render_traj_render_forest.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- NORMAL -->
+                          <video class="result-video normal"
+                          src="static/videos/ours/toycar/render_traj_normal.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- METALLIC -->
+                          <video class="result-video metallic"
+                          src="static/videos/ours/toycar/render_traj_refl.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- ROUGHNESS -->
+                          <video class="result-video roughness"
+                          src="static/videos/ours/toycar/render_traj_roughness.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- Albedo -->
+                          <video class="result-video albedo"
+                          src="static/videos/ours/toycar/render_traj_base.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <div class="bal-beforePosition beforeLabel">GAINS (Ours)</div>
+                      </div>
+                  </div>
+                  <div class="bal-handle">
+                      <span class="handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                  </div>
+              </div>        
+          </div>
         </div>
-        <div class="item">
-          <img src="static/images/tensorIR_lego_relight_env.png">
-          <h2 class="subtitle has-text-centered">lego</h2>
-        </div>
-        <div class="item">
-          <img src="static/images/tensorIR_ficus_relight_env.png">
-          <h2 class="subtitle has-text-centered">ficus</h2>
-        </div>
-        <div class="item">
-          <img src="static/images/tensorIR_armadillo_relight_env.png">
-          <h2 class="subtitle has-text-centered">armadillo</h2>
+        <!-- Ours vs GI-GS -->
+        <div class="column is-half">
+          <div id="example3" class="small-bal-container">
+              <div class="bal-wrapper">
+                  <div class="bal-after">
+                      <!-- RELIGHT -->
+                      <video class="result-video relight bridge active"
+                      src="static/videos/gi_gs/toycar/render_traj_render_bridge.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight city"
+                      src="static/videos/gi_gs/toycar/render_traj_render_city.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight forest"
+                      src="static/videos/gi_gs/toycar/render_traj_render_forest.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- NORMAL -->
+                      <video class="result-video normal"
+                      src="static/videos/gi_gs/toycar/render_traj_normal.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- METALLIC -->
+                      <video class="result-video metallic"
+                      src="static/videos/gi_gs/toycar/render_traj_refl.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- ROUGHNESS -->
+                      <video class="result-video roughness"
+                      src="static/videos/gi_gs/toycar/render_traj_roughness.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- Albedo -->
+                      <video class="result-video albedo"
+                      src="static/videos/gi_gs/toycar/render_traj_base.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <div class="bal-afterPosition afterLabel">GI-GS</div>
+                  </div>
+                  <div class="bal-before">
+                      <div class="bal-before-inset">
+                          <video class="result-video relight bridge active"
+                          src="static/videos/ours/toycar/render_traj_render_bridge.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight city"
+                          src="static/videos/ours/toycar/render_traj_render_city.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight forest"
+                          src="static/videos/ours/toycar/render_traj_render_forest.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- NORMAL -->
+                          <video class="result-video normal"
+                          src="static/videos/ours/toycar/render_traj_normal.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- METALLIC -->
+                          <video class="result-video metallic"
+                          src="static/videos/ours/toycar/render_traj_refl.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- ROUGHNESS -->
+                          <video class="result-video roughness"
+                          src="static/videos/ours/toycar/render_traj_roughness.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- Albedo -->
+                          <video class="result-video albedo"
+                          src="static/videos/ours/toycar/render_traj_base.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <div class="bal-beforePosition beforeLabel">GAINS (Ours)</div>
+                      </div>
+                  </div>
+                  <div class="bal-handle">
+                      <span class="handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                  </div>
+              </div>        
+          </div>
         </div>
       </div>
 
-      <!-- Ref-Real carousel -->
-      <div id="carousel-refreal" class="carousel results-carousel result-carousel">
-        <div class="item">
-          <video poster="" id="tree" autoplay muted loop playsinline height="100%">
-            <source src="static/videos/ref_real_spheres.mp4"
-            type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">gardenspheres</h2>
+      <h3 class="title is-5 has-text-centered">Sedan</h3>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div id="example4" class="small-bal-container">
+              <!-- Ours vs Ref-Gaussian -->
+              <div class="bal-wrapper">
+                  <div class="bal-after">
+                      <!-- RELIGHT -->
+                      <video class="result-video relight bridge active"
+                      src="static/videos/ref_gaussian/sedan/render_traj_render_bridge.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight city"
+                      src="static/videos/ref_gaussian/sedan/render_traj_render_city.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight forest"
+                      src="static/videos/ref_gaussian/sedan/render_traj_render_forest.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- NORMAL -->
+                      <video class="result-video normal"
+                      src="static/videos/ref_gaussian/sedan/render_traj_normal.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- METALLIC -->
+                      <video class="result-video metallic"
+                      src="static/videos/ref_gaussian/sedan/render_traj_refl.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- ROUGHNESS -->
+                      <video class="result-video roughness"
+                      src="static/videos/ref_gaussian/sedan/render_traj_roughness.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- Albedo -->
+                      <video class="result-video albedo"
+                      src="static/videos/ref_gaussian/sedan/render_traj_base.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <div class="bal-afterPosition afterLabel">Ref-Gaussian</div>
+                  </div>
+                  <div class="bal-before">
+                      <div class="bal-before-inset">
+                          <video class="result-video relight bridge active"
+                          src="static/videos/ours/sedan/render_traj_render_bridge.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight city"
+                          src="static/videos/ours/sedan/render_traj_render_city.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight forest"
+                          src="static/videos/ours/sedan/render_traj_render_forest.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- NORMAL -->
+                          <video class="result-video normal"
+                          src="static/videos/ours/sedan/render_traj_normal.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- METALLIC -->
+                          <video class="result-video metallic"
+                          src="static/videos/ours/sedan/render_traj_refl.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- ROUGHNESS -->
+                          <video class="result-video roughness"
+                          src="static/videos/ours/sedan/render_traj_roughness.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- Albedo -->
+                          <video class="result-video albedo"
+                          src="static/videos/ours/sedan/render_traj_base.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <div class="bal-beforePosition beforeLabel">GAINS (Ours)</div>
+                      </div>
+                  </div>
+                  <div class="bal-handle">
+                      <span class="handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                  </div>
+              </div>        
+          </div>
         </div>
-        <div class="item">
-          <video poster="" id="tree" autoplay muted loop playsinline height="100%">
-            <source src="static/videos/ref_real_toycar.mp4"
-            type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">toycar</h2>
-        </div>
-        <div class="item">
-          <video poster="" id="tree" autoplay muted loop playsinline height="100%">
-            <source src="static/videos/ref_real_sedan.mp4"
-            type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">sedan</h2>
+        <!-- Ours vs GI-GS -->
+        <div class="column is-half">
+          <div id="example5" class="small-bal-container">
+              <div class="bal-wrapper">
+                  <div class="bal-after">
+                      <!-- RELIGHT -->
+                      <video class="result-video relight bridge active"
+                      src="static/videos/gi_gs/sedan/render_traj_render_bridge.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight city"
+                      src="static/videos/gi_gs/sedan/render_traj_render_city.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <video class="result-video relight forest"
+                      src="static/videos/gi_gs/sedan/render_traj_render_forest.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- NORMAL -->
+                      <video class="result-video normal"
+                      src="static/videos/gi_gs/sedan/render_traj_normal.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- METALLIC -->
+                      <video class="result-video metallic"
+                      src="static/videos/gi_gs/sedan/render_traj_refl.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- ROUGHNESS -->
+                      <video class="result-video roughness"
+                      src="static/videos/gi_gs/sedan/render_traj_roughness.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <!-- Albedo -->
+                      <video class="result-video albedo"
+                      src="static/videos/gi_gs/sedan/render_traj_base.mp4"
+                      autoplay loop muted playsinline></video>
+
+                      <div class="bal-afterPosition afterLabel">GI-GS</div>
+                  </div>
+                  <div class="bal-before">
+                      <div class="bal-before-inset">
+                          <video class="result-video relight bridge active"
+                          src="static/videos/ours/sedan/render_traj_render_bridge.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight city"
+                          src="static/videos/ours/sedan/render_traj_render_city.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <video class="result-video relight forest"
+                          src="static/videos/ours/sedan/render_traj_render_forest.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- NORMAL -->
+                          <video class="result-video normal"
+                          src="static/videos/ours/sedan/render_traj_normal.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- METALLIC -->
+                          <video class="result-video metallic"
+                          src="static/videos/ours/sedan/render_traj_refl.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- ROUGHNESS -->
+                          <video class="result-video roughness"
+                          src="static/videos/ours/sedan/render_traj_roughness.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <!-- Albedo -->
+                          <video class="result-video albedo"
+                          src="static/videos/ours/sedan/render_traj_base.mp4"
+                          autoplay loop muted playsinline></video>
+
+                          <div class="bal-beforePosition beforeLabel">GAINS (Ours)</div>
+                      </div>
+                  </div>
+                  <div class="bal-handle">
+                      <span class="handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                  </div>
+              </div>        
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -218,13 +709,60 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3 has-text-centered">Material Estimation</h2>
-      <p class="is-3 has-text-centered">Synthetic4Relight (8 views)</p>
-      <div class="columns is-centered">
-        <div class="column is-four-fifths">
-          <img src="static/images/syn4r_fig.png" alt="GAINS Material Estimation" style="max-width: 90%; height: auto; display: block; margin: 0 auto;"/>
+
+      <h2 class="title is-3 has-text-centered">More Relighting Results</h2>
+      <p class="title is-4 has-text-centered">tensorIR (8 views)</p>
+
+      <div class="buttons is-centered">
+        <button class="button is-info is-light result-btn" data-target="tensorIR">tensorIR</button>
+        <button class="button is-info is-light result-btn" data-target="shinyblender">Shiny Blender</button>
+      </div>
+
+
+      <!-- tensorIR carousel -->
+      <div id="carousel-tensorIR" class="carousel results-carousel result-carousel active">
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">hotdog</h2>
+          <img src="static/images/tensorIR_hotdog_relight_env.png">
+        </div>
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">lego</h2>
+          <img src="static/images/tensorIR_lego_relight_env.png">
+        </div>
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">ficus</h2>
+          <img src="static/images/tensorIR_ficus_relight_env.png">
+        </div>
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">armadillo</h2>
+          <img src="static/images/tensorIR_armadillo_relight_env.png">
         </div>
       </div>
+
+      <!-- Shiny Blender carousel -->
+      <div id="carousel-shinyblender" class="carousel results-carousel result-carousel">
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">toaster</h2>
+          <img src="static/images/ref_syn_toaster_relight_env.png">
+        </div>
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">helmet</h2>
+          <img src="static/images/ref_syn_helmet_relight_env.png">
+        </div>
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">teapot</h2>
+          <img src="static/images/ref_syn_teapot_relight_env.png">
+        </div>
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">car</h2>
+          <img src="static/images/ref_syn_car_relight_env.png">
+        </div>
+        <div class="item">
+          <h2 class="is-4 subtitle has-text-centered">coffee</h2>
+          <img src="static/images/ref_syn_coffee_relight_env.png">
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -246,8 +784,7 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 </section>
 <!--End BibTex citation -->
 
-
-  <footer class="footer">
+<footer class="footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
@@ -264,7 +801,7 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 </footer>
 
 <script>
-  const buttons = document.querySelectorAll('.result-btn');
+const buttons = document.querySelectorAll('.result-btn');
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const target = button.getAttribute('data-target');
@@ -277,18 +814,75 @@ recovery from dense multi-view captures. However, these methods degrade sharply 
 
       const desc = {
         tensorIR: "tensorIR (8 views)",
-        refreal: "Ref-Real (8 views)",
+        shinyblender: "Shiny Blender (8 views)",
       };
-      document.querySelector('p.is-3').textContent = desc[target];
+      document.querySelector('p.title').textContent = desc[target];
     });
   });
+
+let mode = "relight";
+let env = "bridge";
+
+function updateVideos(){
+
+  document.querySelectorAll(".result-video").forEach(v=>{
+    v.classList.remove("active");
+  });
+
+  if(mode === "relight"){
+    document.querySelectorAll(`.relight.${env}`).forEach(v=>{
+      v.classList.add("active");
+    });
+  }
+  else{
+    document.querySelectorAll(`.${mode}`).forEach(v=>{
+      v.classList.add("active");
+    });
+  }
+
+}
+
+document.querySelectorAll(".mode-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+
+    document.querySelectorAll(".mode-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+
+    mode = btn.dataset.mode;
+
+    const envButtons = document.getElementById("env-buttons");
+
+    if(mode === "relight"){
+      envButtons.style.display="flex";
+    }else{
+      envButtons.style.display="none";
+    }
+
+    updateVideos();
+  });
+});
+
+document.querySelectorAll(".env-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+
+    document.querySelectorAll(".env-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+
+    env = btn.dataset.env;
+
+    updateVideos();
+  });
+});
+
+new BeforeAfter({ id: '#example0' });
+new BeforeAfter({ id: '#example1' });
+new BeforeAfter({ id: '#example2' });
+new BeforeAfter({ id: '#example3' });
+new BeforeAfter({ id: '#example4' });
+new BeforeAfter({ id: '#example5' });
+
 </script>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
