@@ -1,0 +1,3 @@
+python train.py -m output/ref_real/gardenspheres -s data/ref_real/gardenspheres --initial 1 -r 8 --full_sparse 1 --sparse 8 --scope 88 24 --iid_model rgb2x --strength_La 1.0  --lambda_intra_seg 1.0 && \
+python train.py -m output/ref_real/sedan -s data/ref_real/sedan --initial 1 -r 8 --full_sparse 1 --sparse 8 --scope 88 24 --iid_model rgb2x --strength_La 1.0 && \
+python train.py -m output/ref_real/toycar -s data/ref_real/toycar --initial 1 -r 8 --full_sparse 1 --sparse 8 --scope 98 24 --iid_model rgb2x --strength_La 1.0

@@ -1,0 +1,4 @@
+python render.py -m output/syn4r/air_baloons -s data/Synthetic4Relight/air_baloons --eval --skip_train --align_albedo --align_relighting --test_relight envmaps/syn4r && \
+python render.py -m output/syn4r/chair -s data/Synthetic4Relight/chair --eval --skip_train --align_albedo --align_relighting --test_relight envmaps/syn4r && \
+python render.py -m output/syn4r/hotdog -s data/Synthetic4Relight/hotdog --eval --skip_train --align_albedo --align_relighting --test_relight envmaps/syn4r && \
+python render.py -m output/syn4r/jugs -s data/Synthetic4Relight/jugs --eval --skip_train --align_albedo --align_relighting --test_relight envmaps/syn4r
