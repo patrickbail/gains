@@ -146,15 +146,9 @@ def get_seg_intra_error(render_pkg, seg_classes, region, region_2, args, include
             # weight magnitude can be tuned
             spec_bias = class_error * (
                 (1.0 - vals_m.mean()) + (args.strength_r * vals_r.mean())
-                #(1.0 - vals_m.mean()) + vals_r.mean()
             )
             spec_bias_loss += spec_bias * scale
 
-    # 0.1* for a works better 0.1* for spec bias on spheres?
-    # 0.1 for both La and Le + no vals_r for spec seems to be best but current eval and paper do 0.1 both and with vals_r
-    # no vals_r gives better roughness estimations
-    # 0.1 only for Le is probably for spheres
-    # 0.1 La and Le + vals_r for synthetic, 0.1 Le + vals_r for real
     intra_class_consistency_loss = (
         (intra_loss_r + intra_loss_m + args.strength_La*intra_loss_a + 0.1*spec_bias_loss) / valid_classes
     )
@@ -394,7 +388,6 @@ def calculate_loss(viewpoint_camera, pc, render_pkg, opt, iteration, diff_model,
             else:
                 depth_rank_loss = get_depth_ranking_loss(surf_depth, mono_depth, None)
 
-            #0.005
             loss = loss + args.lambda_dr * depth_rank_loss + args.lambda_pl * pearson_loss
 
         # Normal guidance
