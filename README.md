@@ -42,23 +42,17 @@ pip install submodules/diff-gaussian-rasterization-blend-seg
 pip install submodules/pytorch3d 
 ```
 
-### Dataset
+### Datasets
 GAINS has been primarily tested on one real dataset, [Ref-Real](https://storage.googleapis.com/gresearch/refraw360/ref_real.zip), Ref-Real, and two synthetic datasets, [Shiny Blender](https://storage.googleapis.com/gresearch/refraw360/ref.zip) and [Synthetic4Relight](https://drive.google.com/file/d/1wWWu7EaOxtVq8QNalgs6kDqsiAm7xsRh/view). For the Shiny Blender dataset, we additionally rendered albedo and relit images for further evaluation. These can be downloaded [here](https://drive.google.com/file/d/18JlGKbkU23OD_Pzfw-TcB3dnWTPS-atO/view?usp=sharing). here. Make sure to place these folders inside `gains/data`.
 
 ### Priors
-inside gains/data.
-
-Priors
-
 GAINS utilizes priors for both Stage I and Stage II. For depth and normal priors, we use [Marigold](https://github.com/prs-eth/marigold) and therefore strongly recommend using this monocular estimator to generate these maps for Stage I. Place the `depth_npy` and `normals_npy` folders inside the respective scene folders. If the priors are generated at a different resolution for the real data (we recommend a resolution of 8), the folder names should instead follow the format `depth_npy_{resolution}` and `normals_npy_{resolution}`.
 \
-depth_npy_{resolution} and normals_npy_{resolution}.
-
 For Stage II, we use [Teamwork](https://github.com/samsartor/teamwork) to generate albedo maps for synthetic data and [RGB2X](https://github.com/zheng95z/rgbx) for real data. For synthetic data, make sure the folder is named `iid_teamwork`, while for real data it should be named `iid_npy_{resolution}_rgb2x`. These folders should be placed in the scene root directory.
 \
 Scripts for running Teamwork and RGB2X are provided in `iid_scripts` if needed.
 
-### Running
+### Training
 We provide a run script for each dataset. For example, to train on Synthetic4Relight, simply run:
 ```
 sh scripts/train_syn4r.sh
@@ -101,7 +95,7 @@ sh scripts/train_syn4r.sh
   Number of input images
 
   #### --scope
-  The scope of images to pick from given sparse number
+  The scope of images to pick from given sparse number. Set 0 -1 for full range
 
   #### --srgb
   Boolean if input images are in nonlinear sRGB space
@@ -110,7 +104,7 @@ sh scripts/train_syn4r.sh
   Strength of albedo uniformity term inside ICC
 
   #### --strength_r
-  Strength of roughness term inside ICC specularity term
+  Strength of roughness inside ICC specularity term
   
 </details>
 
@@ -128,7 +122,7 @@ We would like to thank the following excellent works on which our work is built:
 - [FatesGS](https://github.com/yulunwu0108/FatesGS)
 
 ## Citation
-Please consider citing our work, if you found it useful in your work
+Please consider citing our work, if you found it useful in your research
 
 ```bibtex
 @inproceedings{noras2025gains,
