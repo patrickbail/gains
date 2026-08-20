@@ -67,9 +67,6 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     first_iter = 0
     tb_writer = prepare_output_and_logger()
 
-    print(args.strength_La, args.r_reduc)
-    exit()
-
     # Set up parameters 
     TOT_ITER = opt.iterations + 1
     TEST_INTERVAL = 500 #1000
