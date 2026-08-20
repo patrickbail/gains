@@ -1,19 +1,19 @@
 <h2 align="center">
   GAINS: Gaussian-based Inverse Rendering from Sparse Multi-View Captures
 </h2>
-<h4 align="center">ECCV 2026</h4>
+<h3 align="center">ECCV 2026</h3>
 <div align="center">
-  <a href='https://patrickbail.github.io' target='_blank'>Patrick Noras<sup>1,2</sup></a>&emsp;
-  <a href='https://chedgekorea.github.io/' target='_blank'>Jun Myeong Choi<sup>3</sup></a>&emsp;
-  <a href='https://av.dfki.de/members/stricker/' target='_blank'>Didier Stricker<sup>1,2</sup></a>&emsp;
-  <a href='https://www.cs.wm.edu/~ppeers/' target='_blank'>Pieter Peers<sup>4</sup></a>&emsp;
-  <a href='https://www.cs.unc.edu/~ronisen/' target='_blank'>Roni Sengupta<sup>3</sup></a>&emsp;
-  <br>University of Kaiserslautern-Landau<sup>1</sup>, German Research Center for Artificial Intelligence<sup>2</sup>,
-University of North Carolina at Chapel Hill<sup>3</sup>, College of William & Mary<sup>4</sup><br>
+  <a href='https://patrickbail.github.io' target='_blank'>Patrick Noras</a><sup>1,2</sup>&emsp;
+  <a href='https://chedgekorea.github.io/' target='_blank'>Jun Myeong Choi</a><sup>3</sup>&emsp;
+  <a href='https://av.dfki.de/members/stricker/' target='_blank'>Didier Stricker</a><sup>1,2</sup>&emsp;
+  <a href='https://www.cs.wm.edu/~ppeers/' target='_blank'>Pieter Peers</a><sup>4</sup>&emsp;
+  <a href='https://www.cs.unc.edu/~ronisen/' target='_blank'>Roni Sengupta</a><sup>3</sup>&emsp;
+  <br><sup>1</sup>University of Kaiserslautern-Landau, <sup>2</sup>German Research Center for Artificial Intelligence,
+<sup>3</sup>University of North Carolina at Chapel Hill, <sup>4</sup>College of William & Mary<br>
 </div>
 <p align="center">
-  <a href="https://arxiv.org/abs/2512.09925" target='_blank'><img src="http://img.shields.io/badge/cs.CV-arXiv%3A2501.04628-b31b1b"></a>
-  <a href="https://patrickbail.github.io/gains/" target='_blank'><img src="http://img.shields.io/badge/Project_Page-😇-lightblue"></a>
+  <a href="https://arxiv.org/abs/2512.09925" target='_blank'><img src="http://img.shields.io/badge/cs.CV-arXiv%3A2512.09925-b31b1b"></a>
+  <a href="https://patrickbail.github.io/gains/" target='_blank'><img src="http://img.shields.io/badge/Project_Page-blue"></a>
 </p>
 The official implementation of "GAINS: Gaussian-based Inverse Rendering from Sparse Multi-View Captures".
 
@@ -43,7 +43,7 @@ pip install submodules/pytorch3d
 ```
 
 ### Datasets
-GAINS has been primarily tested on one real dataset, [Ref-Real](https://storage.googleapis.com/gresearch/refraw360/ref_real.zip), and two synthetic datasets, [Shiny Blender](https://storage.googleapis.com/gresearch/refraw360/ref.zip) and [Synthetic4Relight](https://drive.google.com/file/d/1wWWu7EaOxtVq8QNalgs6kDqsiAm7xsRh/view). For the Shiny Blender dataset, we additionally rendered albedo and relit images for further evaluation. These can be downloaded [here](https://drive.google.com/file/d/18JlGKbkU23OD_Pzfw-TcB3dnWTPS-atO/view?usp=sharing). here. Make sure to place these folders inside `gains/data`.
+GAINS has been primarily tested on one real dataset, [Ref-Real](https://storage.googleapis.com/gresearch/refraw360/ref_real.zip), and two synthetic datasets, [Shiny Blender](https://storage.googleapis.com/gresearch/refraw360/ref.zip) and [Synthetic4Relight](https://drive.google.com/file/d/1wWWu7EaOxtVq8QNalgs6kDqsiAm7xsRh/view). For the Shiny Blender dataset, we additionally rendered albedo and relit images for further evaluation. These can be downloaded [here](https://drive.google.com/file/d/18JlGKbkU23OD_Pzfw-TcB3dnWTPS-atO/view?usp=sharing). Make sure to place these folders inside `gains/data`.
 
 ### Priors
 GAINS utilizes priors for both Stage I and Stage II. For depth and normal priors, we use [Marigold](https://github.com/prs-eth/marigold) and therefore strongly recommend using this monocular estimator to generate these maps for Stage I. Place the `depth_npy` and `normals_npy` folders inside the respective scene folders. If the priors are generated at a different resolution for the real data (we recommend a resolution of 8), the folder names should instead follow the format `depth_npy_{resolution}` and `normals_npy_{resolution}`.
