@@ -24,7 +24,7 @@ The code has been tested with `python=3.10.14`, `torch=2.5.1` and `torchvision=0
 
 1. Clone GAINS and download the pre-trained SAM 2 model. Also download [enviroment maps](https://drive.google.com/file/d/1KzkB6I6b8ol3fCVLETHJWv5LkVWvrkpC/view?usp=sharing) required for MI-SDS and place them in the root folder.
 ```bash
-git clone --recursive https://github.com/NVlabs/InstantSplat.git
+git clone --recursive https://github.com/patrickbail/gains.git
 cd gains
 mkdir -p checkpoints/
 wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth -P checkpoints/
