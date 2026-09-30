@@ -229,7 +229,7 @@ def pearson_depth_loss(depth_src, depth_target):
     co = (src * target).mean()
     return 1 - torch.nan_to_num(co)
 
-def calculate_loss(viewpoint_camera, pc, render_pkg, opt, iteration, diff_model, nv_diff_render_pkg, args):
+def calculate_loss(viewpoint_camera, pc, render_pkg, opt, iteration, diff_model, nv_diff_render_pkg, args, isBlender):
     tb_dict = {
         "num_points": pc.get_xyz.shape[0],
     }
@@ -298,7 +298,7 @@ def calculate_loss(viewpoint_camera, pc, render_pkg, opt, iteration, diff_model,
         step_ratio = None
         if args.step_ratio:
             step_ratio = args.step_ratio
-        if "ref_real" not in args.source_path:
+        if isBlender:
             nv_diff_image = nv_diff_render_pkg['render_image_env']
         else:
             nv_diff_image = nv_diff_render_pkg['render']

@@ -79,7 +79,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         REFL_MSK_LOSS_W = 0.4
 
 
-    gaussians = GaussianModel(dataset.sh_degree, novel_env_root_dir=args.novel_env_root_dir, args=args)
+    gaussians = GaussianModel(dataset.sh_degree, args=args)
     set_gaussian_para(gaussians, opt) # #
     env_name = None
     if args.envmap_path:
@@ -88,6 +88,8 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     if args.novel_env_root_dir:
         nv_envs = sorted([env_path for env_path in glob(args.novel_env_root_dir) if "sunset" not in os.path.basename(env_path)])
     scene = Scene(args, gaussians, env_map=env_name)  # init all parameters(pos, scale, rot...) from pcds
+    if args.novel_env_root_dir:
+        gaussians.setup_novel_envs(args.novel_env_root_dir, args, scene.isBlender)
     gaussians.training_setup(opt)
     lifted_seg = False
     if checkpoint:
@@ -239,7 +241,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
 
         gt_image = viewpoint_cam.original_image.cuda()
 
-        total_loss, tb_dict = calculate_loss(viewpoint_cam, gaussians, render_pkg, opt, iteration, diff_model, nv_diff_render_pkg, args)
+        total_loss, tb_dict = calculate_loss(viewpoint_cam, gaussians, render_pkg, opt, iteration, diff_model, nv_diff_render_pkg, args, scene.isBlender)
         normal_loss, loss, Ll1 = tb_dict["loss_normal_render_depth"], tb_dict["loss0"], tb_dict["loss_l1"]
         iid_loss, tv_env_loss, diff_loss, intra_seg_loss = tb_dict["loss_iid"], tb_dict["loss_tv_env"], tb_dict["loss_diff"], tb_dict["loss_intra_seg"]
 
@@ -344,7 +346,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                 if iteration % opacity_reset_intval == 0 or (dataset.white_background and iteration == opt.densify_from_iter):
                     gaussians.reset_opacity0()
 
-            if total_images < 64 and iteration < opt.init_until_iter and args.lambda_bce > 0 and (args.full_sparse and iteration % 1000 == 0 or (dataset.white_background and iteration == opt.init_until_iter)) and "ref_real" not in args.source_path:
+            if total_images < 64 and iteration < opt.init_until_iter and args.lambda_bce > 0 and (args.full_sparse and iteration % 1000 == 0 or (dataset.white_background and iteration == opt.init_until_iter)) and scene.isBlender:
                 gaussians.remove_outliers(opt, iteration, linear=True)
                             
             if iteration < TOT_ITER:

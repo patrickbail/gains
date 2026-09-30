@@ -197,9 +197,6 @@ class GaussianExtractor(object):
                     if self.isSrgb:
                         render_albedo = srgb_to_rgb(render_albedo)
                     self.pred_albedo.append(render_albedo.permute(1, 2, 0)[mask > 0])
-                if self.opt.indirect:
-                    indirect_color = render_pkg['indirect_color']
-                    self.indirect_color.append(indirect_color.cpu())
                 self.diff_maps.append(diff.cpu())
                 self.spec_maps.append(spec.cpu())
                 self.refl_maps.append(refl.cpu())

@@ -173,7 +173,7 @@ if __name__ == "__main__":
         create_videos(base_dir=traj_dir,
                     input_dir=traj_dir, 
                     out_name='render_traj', 
-                    num_frames=n_fames, render_seg=gaussExtractor.render_seg, indirect_color=op.indirect)
+                    num_frames=n_fames, render_seg=gaussExtractor.render_seg)
 
     if args.test_relight and (len(scene.getTestCameras()) > 0):
         print("testing under multiple relight conditions...")

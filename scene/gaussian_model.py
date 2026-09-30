@@ -72,7 +72,7 @@ class GaussianModel:
         self.asg_param = init_predefined_omega(4, 8)
 
 
-    def __init__(self, sh_degree : int, novel_env_root_dir = "", args=None):
+    def __init__(self, sh_degree : int, args=None):
         self.active_sh_degree = 0
         self.max_sh_degree = sh_degree  
         self._xyz = torch.empty(0)
@@ -117,24 +117,25 @@ class GaussianModel:
         self.novel_envs = []
         self.vertices = None
         self.faces = None
-        if novel_env_root_dir:
-            print("Utilizing novel environment maps")
-            self.use_nv_env = None
-            env_paths = glob(os.path.join(novel_env_root_dir, "*.hdr"))
-            env_paths = sorted([env_path for env_path in env_paths if "sunset" not in env_path])
-            for env_path in env_paths:
-                novel_env = EnvLight(path=env_path, device='cuda', max_res=args.envmap_max_res, min_roughness=args.envmap_min_roughness, max_roughness=args.envmap_max_roughness, trainable=False).cuda()
-                novel_env.build_mips()
-                if "ref_real" not in args.source_path:
-                    transform = torch.tensor([
-                        [0, -1, 0], 
-                        [0, 0, 1], 
-                        [-1, 0, 0]
-                    ], dtype=torch.float32, device="cuda")
-                    novel_env.set_transform(transform)
-                self.novel_envs.append(novel_env)
         self.scene_level = args.scene_level
         self.setup_functions()
+
+    def setup_novel_envs(self, novel_env_root_dir, args, isBlender):
+        print("Utilizing novel environment maps")
+        self.use_nv_env = None
+        env_paths = glob(os.path.join(novel_env_root_dir, "*.hdr"))
+        env_paths = sorted([env_path for env_path in env_paths if "sunset" not in env_path])
+        for env_path in env_paths:
+            novel_env = EnvLight(path=env_path, device='cuda', max_res=args.envmap_max_res, min_roughness=args.envmap_min_roughness, max_roughness=args.envmap_max_roughness, trainable=False).cuda()
+            novel_env.build_mips()
+            if isBlender:
+                transform = torch.tensor([
+                    [0, -1, 0], 
+                    [0, 0, 1], 
+                    [-1, 0, 0]
+                ], dtype=torch.float32, device="cuda")
+                novel_env.set_transform(transform)
+            self.novel_envs.append(novel_env)
 
     def capture(self):
         return (
